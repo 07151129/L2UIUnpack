@@ -26,11 +26,11 @@ AC_TYPE_SIZE_T
 AC_TYPE_UINT8_T
 
 AC_ARG_ENABLE([static_stdlib],
-    AS_HELP_STRING([--enable-static-stdlib], [Enable static libstdc++ and libgcc linkage.]),,
-    [enable_static_stdlib=no])
+    AS_HELP_STRING([--enable-static-stdlib], [Enable static libstdc++ and libgcc linkage.]),)
 
-AS_IF([test "x$enable_static_stdlib" == "yes"], [
+AS_IF([test "x$enable_static_stdlib" == "xyes"], [
         if test "x$GCC" = "xyes"; then
+            AC_MSG_NOTICE([Linking libstdc++ and libgcc statically.])
             LDFLAGS="$LDFLAGS -static-libstdc++ -static-libgcc"
         fi
     ])
